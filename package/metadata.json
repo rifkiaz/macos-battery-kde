@@ -1,0 +1,21 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Rifki"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "Elegant macOS-style battery indicator with percentage",
+        "Description[id]": "Indikator baterai elegan ala macOS dengan persentase",
+        "Icon": "battery-good",
+        "Id": "com.github.rifkiaz.macosbattery",
+        "License": "GPL-2.0-or-later",
+        "Name": "macOS Battery",
+        "Name[id]": "Baterai macOS",
+        "Version": "1.0.0",
+        "Website": "https://github.com/rifkiaz/macos-battery-kde"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}
