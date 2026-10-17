@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check tag matches metadata.json version
+        run: |
+          VERSION=$(sed -n 's/.*"Version": *"\([^"]*\)".*/\1/p' package/metadata.json)
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match metadata.json version $VERSION" >&2
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Build .plasmoid
+        run: ./build.sh
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NOTES=".github/release-notes/$GITHUB_REF_NAME.md"
+          if [ -f "$NOTES" ]; then
+            gh release create "$GITHUB_REF_NAME" "macos-battery-$VERSION.plasmoid" \
+              --title "macOS Battery $GITHUB_REF_NAME" --notes-file "$NOTES"
+          else
+            gh release create "$GITHUB_REF_NAME" "macos-battery-$VERSION.plasmoid" \
+              --title "macOS Battery $GITHUB_REF_NAME" --generate-notes
+          fi
