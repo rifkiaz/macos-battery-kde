@@ -30,6 +30,9 @@ PlasmoidItem {
         .sort()
 
     readonly property int percentPosition: Plasmoid.configuration.percentPosition
+    readonly property real iconScale: Plasmoid.configuration.iconSize / 100
+    readonly property real iconAspect: Plasmoid.configuration.iconAspect / 100
+    readonly property real textScale: Plasmoid.configuration.textSize / 100
     readonly property bool colorFill: Plasmoid.configuration.colorFill
     readonly property int lowThreshold: Plasmoid.configuration.lowThreshold
     readonly property bool showDeviceList: Plasmoid.configuration.showDeviceList

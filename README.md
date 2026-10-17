@@ -9,7 +9,8 @@ Widget baterai elegan bergaya macOS untuk KDE Plasma 6, lengkap dengan persentas
 ## Fitur
 
 - Ikon baterai ala macOS: outline tipis, kutub di kanan, isi yang mengikuti level baterai.
-- Persentase di **dalam** baterai (gaya macOS terbaru, angka "terpotong" di bagian yang terisi), **di samping**, atau disembunyikan.
+- Persentase di **dalam** baterai (gaya macOS terbaru, angka "terpotong" di bagian yang terisi), di **kiri** atau **kanan** baterai, atau disembunyikan.
+- Ukuran bisa diatur: tinggi baterai, lebar baterai, dan ukuran teks persentase.
 - Hijau saat mengisi daya, merah saat baterai lemah (bisa dimatikan), ikon petir saat dicas.
 - Klik ikon untuk popup: persentase besar, status ("Charging, 38 min until full", "2 h 10 min remaining"), sumber daya, dan daftar perangkat lain yang punya baterai (mouse, keyboard, dll.).
 - Bisa ditaruh di panel (horizontal/vertikal) maupun di desktop.
@@ -73,7 +74,11 @@ kpackagetool6 --type Plasma/Applet --remove com.github.rifkiaz.macosbattery
 
 Klik kanan widget → **Configure macOS Battery…**
 
-- **Percentage**: Hidden / Next to the battery / Inside the battery
+- **Percentage**: Hidden / Left of the battery / Inside the battery / Right of the battery
+- **Percentage text size**: ukuran teks persen di kiri/kanan (50–200%)
+- **Battery height**: tinggi baterai, relatif terhadap ukuran otomatis panel (50–250%, tidak melebihi tebal panel)
+- **Battery width**: lebar baterai dalam persen dari tingginya (140–350%, default 215%)
+- **Reset size**: kembalikan ukuran ke default
 - **Colors**: hijau saat mengisi, merah saat lemah
 - **Low battery level**: batas "lemah" (default 20%)
 - **Popup**: tampilkan perangkat lain (mouse, keyboard, …)

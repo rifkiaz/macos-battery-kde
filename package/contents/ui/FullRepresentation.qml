@@ -48,7 +48,7 @@ Item {
             BatteryIcon {
                 id: bigIcon
                 Layout.preferredHeight: Math.round(Kirigami.Units.gridUnit * 1.9)
-                Layout.preferredWidth: Math.round(Layout.preferredHeight * 2.15)
+                Layout.preferredWidth: Math.round(Layout.preferredHeight * root.iconAspect)
                 percent: root.percent
                 present: root.hasBattery
                 charging: root.charging
@@ -118,7 +118,7 @@ Item {
 
                     BatteryIcon {
                         Layout.preferredHeight: Math.round(Kirigami.Units.gridUnit * 0.7)
-                        Layout.preferredWidth: Math.round(Layout.preferredHeight * 2.15)
+                        Layout.preferredWidth: Math.round(Layout.preferredHeight * root.iconAspect)
                         percent: deviceRow.level
                         charging: deviceRow.info["State"] === "Charging"
                         showPercentInside: false

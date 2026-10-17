@@ -71,7 +71,7 @@ Item {
             color: root.foreground
             text: root.present ? Math.round(root.level).toString() : "–"
             charging: root.charging
-            pixelSize: Math.round(body.height * 0.6)
+            pixelSize: Math.round(Math.min(body.height * 0.6, body.width * 0.32))
             fontFamily: root.fontFamily
         }
 

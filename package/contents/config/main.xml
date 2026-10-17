@@ -4,9 +4,27 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
     <kcfgfile name=""/>
     <group name="General">
-        <!-- 0 = hidden, 1 = next to the icon, 2 = inside the icon -->
+        <!-- 0 = hidden, 1 = left of the icon, 2 = inside the icon, 3 = right of the icon -->
         <entry name="percentPosition" type="Int">
             <default>2</default>
+        </entry>
+        <!-- Battery height, in percent of the automatic size -->
+        <entry name="iconSize" type="Int">
+            <default>100</default>
+            <min>50</min>
+            <max>250</max>
+        </entry>
+        <!-- Battery width, in percent of its height -->
+        <entry name="iconAspect" type="Int">
+            <default>215</default>
+            <min>140</min>
+            <max>350</max>
+        </entry>
+        <!-- Size of the percentage text next to the battery, in percent -->
+        <entry name="textSize" type="Int">
+            <default>100</default>
+            <min>50</min>
+            <max>200</max>
         </entry>
         <entry name="colorFill" type="Bool">
             <default>true</default>
