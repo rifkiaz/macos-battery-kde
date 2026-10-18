@@ -99,11 +99,11 @@ Item {
         Bolt {
             visible: root.charging && !root.showPercentInside
             anchors.centerIn: parent
-            height: Math.round(body.height * 0.8)
+            height: Math.round(body.height * 0.96)
             width: Math.round(height * 0.62)
             color: root.foreground
             outline: root.knockout
-            outlineWidth: 1.6
+            outlineWidth: Math.max(1, height * 0.07)
         }
     }
 

@@ -5,7 +5,9 @@
 import QtQuick
 import QtQuick.Shapes
 
-// Lightning bolt drawn in a 10x16 box and scaled to the item's size
+// Lightning bolt drawn in a 10x16 box and scaled to the item's size.
+// The optional outline is drawn behind the bolt, so it never makes the
+// bolt itself thinner.
 Item {
     id: root
 
@@ -13,19 +15,34 @@ Item {
     property color outline: "transparent"
     property real outlineWidth: 0
 
+    readonly property string boltPath: "M 6.3 0 L 0.2 9.3 L 4.5 9.3 L 3.5 16 L 9.8 6.5 L 5.4 6.5 Z"
+
     Shape {
         anchors.fill: parent
-        layer.enabled: true
-        layer.samples: 4
-        layer.smooth: true
+        visible: root.outlineWidth > 0
+        preferredRendererType: Shape.CurveRenderer
+
+        ShapePath {
+            scale: Qt.size(root.width / 10, root.height / 16)
+            fillColor: root.outline
+            strokeColor: root.outline
+            // Half of the stroke lies inside the bolt, hidden by it
+            strokeWidth: root.outlineWidth * 2
+            joinStyle: ShapePath.RoundJoin
+            PathSvg { path: root.boltPath }
+        }
+    }
+
+    Shape {
+        anchors.fill: parent
+        preferredRendererType: Shape.CurveRenderer
 
         ShapePath {
             scale: Qt.size(root.width / 10, root.height / 16)
             fillColor: root.color
-            strokeColor: root.outlineWidth > 0 ? root.outline : "transparent"
-            strokeWidth: root.outlineWidth > 0 ? root.outlineWidth : -1
-            joinStyle: ShapePath.RoundJoin
-            PathSvg { path: "M 6.2 0 L 0.4 9.2 L 4.6 9.2 L 3.6 16 L 9.6 6.6 L 5.4 6.6 Z" }
+            strokeColor: "transparent"
+            strokeWidth: -1
+            PathSvg { path: root.boltPath }
         }
     }
 }
